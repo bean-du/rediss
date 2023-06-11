@@ -19,7 +19,7 @@ impl Listener {
         info!("accepting inbound connections");
 
         loop {
-            let socket = self.accept().await?;
+            let socket= self.accept().await?;
 
             let handle = Hadnler::new(Connection::new(socket));
 
