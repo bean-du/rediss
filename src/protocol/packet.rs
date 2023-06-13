@@ -52,7 +52,6 @@ impl Packet {
     pub fn pack() -> Result<u8> {
         
         Ok(())
-    }
 }
 
 async fn  get_u8(src: &mut Cursor<Vec<u8>>) -> Result<u8> {

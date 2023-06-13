@@ -1,7 +1,10 @@
-use std::io::Cursor;
 use crate::Result;
 use bytes::BytesMut;
-use tokio::{io::{BufWriter, AsyncReadExt}, net::TcpStream};
+use std::io::Cursor;
+use tokio::{
+    io::{AsyncReadExt, BufWriter},
+    net::TcpStream,
+};
 
 use crate::protocol::packet::Packet;
 
@@ -46,16 +49,14 @@ impl Connection {
     }
 
     pub async fn parse_packet(&mut self) -> Result<Option<Packet>> {
-        
         let mut buf = Cursor::new(self.buffer.to_vec());
-        
+
         let packet = Packet::parse(&mut buf).await?;
 
         Ok(Some(packet))
     }
 
     pub async fn write_packet(&self, pkt: Packet) -> std::io::Result<()> {
-
         Ok(())
     }
 }
